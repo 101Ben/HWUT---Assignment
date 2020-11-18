@@ -171,12 +171,12 @@ namespace UnitTests
             // Act
             result.Ratings = testArray;
 
-            // Assert
             bool valid = true;
             for (int i = 0; i < testArray.Length; i++)
             {
                 valid = true && testArray[i] == result.Ratings[i];
             }
+            // Assert
             Assert.IsTrue(valid);
 
         }
@@ -184,8 +184,9 @@ namespace UnitTests
         [TestMethod]
         public void ProductModel_Valid_AverageRating_TestAverageRating_Should_Return_Int()
         {
-            int[] testArray = { 1, 2, 3, 2 };
+
             // Arrange
+            int[] testArray = { 1, 2, 3, 2 };
             var result = new ProductModel();
 
             // Act
@@ -228,9 +229,9 @@ namespace UnitTests
         [TestMethod]
         public void ProductModel_Valid_AverageRating_TestAverageRating_Should_Return_Zero_case_three()
         {
-            int[] testArray = { -5, 5 };
             // Arrange
             var result = new ProductModel();
+            int[] testArray = { -5, 5 };
 
             // Act
             result.Ratings = testArray;
@@ -241,19 +242,35 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void ProductModel_Valid_ToString_TestToString_Should_Return_String()
+        public void ProductModel_Valid_ToString_TestToString_Should_Return_String_case_one()
         {
             // Arrange
             var result = new ProductModel();
 
             // Act
             result.Id = "123456";
-            result.Title = "string";
-            result.Description = "desc";
 
             String print = result.ToString();
 
-            Boolean valid = print.Contains("123456") && print.Contains("string") && print.Contains("desc");
+            Boolean valid = print.Contains("123456");
+
+            // Assert
+            Assert.IsTrue(valid);
+
+        }
+
+        [TestMethod]
+        public void ProductModel_Valid_ToString_TestToString_Should_Return_String_case_two()
+        {
+            // Arrange
+            var result = new ProductModel();
+
+            // Act
+            result.Title = "string";
+
+            String print = result.ToString();
+
+            Boolean valid = print.Contains("string");
 
             // Assert
             Assert.IsTrue(valid);
